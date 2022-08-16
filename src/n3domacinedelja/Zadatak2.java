@@ -1,0 +1,44 @@
+package n3domacinedelja;
+
+import java.util.Arrays;
+import java.util.Stack;
+
+public class Zadatak2 {
+
+    public static void main(String[] args) {
+
+        int[][] matrix = {{3, 2, 1, 7},
+                {9, 11, 5, 4},
+                {6, 0, 13, 17},
+                {7, 21, 14, 15}};
+        int[][] res = new int[matrix.length][matrix[0].length];
+
+        int maxSum = 0;
+        int index = 0;
+
+        for (int i = 0; i < matrix.length; i++) {
+            int sum = 0;
+            for (int j = 0; j < matrix[i].length; j++) {
+                sum += matrix[i][j];
+
+            }
+            if (maxSum < sum) {
+                maxSum = sum;
+                index = i;
+                res[i] = matrix[i];
+            }
+        }
+        int[] svap = res[0];
+        if (!Arrays.equals(res[0], res[index])) {
+
+            res[0] = res[index];
+            res[index] = svap;
+        }
+
+        for (int i = 0; i < matrix.length; i++) {
+
+            System.out.println(Arrays.toString(res[i]));
+        }
+
+    }
+}
